@@ -1,0 +1,52 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+<header class="bg-gray-100 p-4 flex justify-between items-center border-b">
+    <div class="logo">
+        <a href="" class="text-xl text-teal-500 font-bold hover:text-teal-800">CRM</a>
+    </div>
+    <div class="space-x-3">
+        <a href="" class="text-lg font-semibold text-gray-600 hover:text-gray-800">Browse</a>
+        <a href="" class="text-lg font-semibold text-gray-600 hover:text-gray-800">Add</a>
+    </div>
+      <ul class="flex space-x-3">
+
+        <li class=""><a href="{% url 'user:logout' %}" class="px-4 py-2 text-lg bg-red-500 text-white font-semibold rounded-xl hover:bg-red-800 ">Logout</a></li>
+        <li class=""><a href="{% url 'user:login' %}" class="text-lg text-white font-semibold bg-gray-500 px-4 py-2 rounded-xl hover:bg-gray-800">Login</a></li>
+        <li class=""><a href="{% url 'user:register' %}" class="text-lg font-semibold text-white px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-800">Signup</a></li>
+      </ul>
+</header>
+<main>
+  <table class="table-auto">
+    <thead>
+      <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Zipcode</th>
+        <th>ID</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% if records %}
+      {% for record in records %}
+      <tr>
+        <td>{{record.first_name}}
+          {{record.last_name}}</td>
+       <td> {{record.address}}</td>
+        <td>{{record.email}}</td>
+       <td> {{record.phone}}</td>
+        <td>{{record.city}}</td>
+        <td>{{record.zipcode}}</td>
+        <td>{{record.id}}</td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+</main>
+    {% endblock %}
