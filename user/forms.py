@@ -1,6 +1,7 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
 
 class LoginForm(forms.Form):
     username=forms.CharField(max_length=50,
@@ -21,7 +22,8 @@ class LoginForm(forms.Form):
 class RegisterForm(UserCreationForm):
     class Meta:
         model=User
-        field=('username','email','password1','password2')
+        field=['username','email','password1','password2']
+        exclude = ("first_name", "last_name")
     username=forms.CharField(widget=forms.TextInput(attrs={
             'placeholder':'Enter Username',
             'class':'w-full px-6 py-4 rounded-xl',
