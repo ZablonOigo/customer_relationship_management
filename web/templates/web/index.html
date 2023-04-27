@@ -1,5 +1,7 @@
 {% extends 'web/base.html' %}
-
+{% block title %} 
+         Staff |
+        {% endblock %}
 {% block content %}
 <header class="bg-gray-100 p-4 flex justify-between items-center border-b">
     <div class="logo">
@@ -17,35 +19,92 @@
       </ul>
 </header>
 <main>
-  <table class="table-auto">
-    <thead>
-      <tr>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Address</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>City</th>
-        <th>Zipcode</th>
-        <th>ID</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      {% if records %}
-      {% for record in records %}
-      <tr>
-        <td>{{record.first_name}}
-          {{record.last_name}}</td>
-       <td> {{record.address}}</td>
-        <td>{{record.email}}</td>
-       <td> {{record.phone}}</td>
-        <td>{{record.city}}</td>
-        <td>{{record.zipcode}}</td>
-        <td>{{record.id}}</td>
-      </tr>
-      {% endfor %}
+  <div class="px-6 py-10 lg:py-20 bg-gray-700">
+    <div class="max-w-3xl mx-auto text-center">
+        <p class="mb-2 text-3xl lg:text-5xl text-white">
+            Customer Relationship Management
+        </p>
+        <p class="mb-10 text-white">
+            lorem ipsum dolor sit
+        </p>
+        <a href="" class="inline-block px-8 py-4 rounded-xl font-semibold bg-white text-dark-500 hover:bg-green-500">Add Staff</a>
+    </div>
+</div>
+  <h2 class="mt-10 text3xl text-dark-700 font-bold">Staff Record's</h2>
+<div class=" mt-2 relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  Name
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Department
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Email
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Address
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Phone
+              </th>
+              <th class="px-6 py-3">
+                City
+              </th>
+              <th class="px-6 py-3">
+                Zipcode
+              </th>
+              <th class="px-6 py-3">
+                ID
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+        {% if records %}
+        {% for record in records %}
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{record.first_name}}
+                {{record.last_name}}
+              </th>
+              <td class="px-6 py-4">
+                {{record.department}}
+              </td>
+              <td class="px-6 py-4">
+                {{record.email}}
+              </td>
+              <td class="px-6 py-4">
+                {{record.address}}
+              </td>
+              <td class="px-6 py-4">
+                {{record.phone}}
+              </td>
+              <td class="px-6 py-4">
+                {{record.city}}
+              </td>
+              <td class="px-6 py-4">
+                {{record.zipcode}}
+              </td>
+              <td class="px-6 py-4">
+                {{record.Id}}
+              </td>
+              <td class="px-6 py-4 text-right">
+                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              </td>
+              {% endfor %}
       {% endif %}
+          </tr>
+      </tbody>
+  </table>
+</div>
+    <tbody>
+  
+      <tr>
+       
+      </tr>
+      
     </tbody>
   </table>
 </main>
