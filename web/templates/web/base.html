@@ -18,24 +18,15 @@
             <a href="" class="text-lg font-semibold text-gray-600 hover:text-gray-800">Add</a>
         </div>
           <ul class="flex space-x-3">
+            {% if request.user.is_authenticated %}
     
             <li class=""><a href="{% url 'user:logout' %}" class="px-4 py-2 text-lg bg-red-500 text-white font-semibold rounded-xl hover:bg-red-800 ">Logout</a></li>
+            {% else %}
             <li class=""><a href="{% url 'user:login' %}" class="text-lg text-white font-semibold bg-gray-500 px-4 py-2 rounded-xl hover:bg-gray-800">Login</a></li>
             <li class=""><a href="{% url 'user:register' %}" class="text-lg font-semibold text-white px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-800">Signup</a></li>
-          </ul>
+            {% endif %}  
+        </ul>
     </header>
-    <div class="px-6 py-10 lg:py-20 bg-gray-700">
-        <div class="max-w-3xl mx-auto text-center">
-            <p class="mb-2 text-3xl lg:text-5xl text-white">
-                Customer Relationship Management
-            </p>
-            <p class="mb-10 text-white">
-                lorem ipsum dolor sit
-            </p>
-            <a href="" class="inline-block px-8 py-4 rounded-xl font-semibold bg-white text-dark-500 hover:bg-green-500">Add Staff</a>
-        </div>
-    </div>
-    
     <div class="container">
         {% block content %}
         {% endblock %}

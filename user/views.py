@@ -7,7 +7,7 @@ def sign_in(request):
         form=LoginForm()
         context={'form':form}
         return render(request, 'user/login.html', context)
-    elif request.method =="POST":
+    if request.method =="POST":
         form=LoginForm(request.POST)
         if form.is_valid():
             username=form.cleaned_data['username']
@@ -41,7 +41,7 @@ def sign_up(request):
             return redirect('web:index')
         else:
             form=RegisterForm()
-            return render(request, 'user/reg.html',{f'form':form})
+            return render(request, 'user/reg.html',{'form':form})
 
 
 
