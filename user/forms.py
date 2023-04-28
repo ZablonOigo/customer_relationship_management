@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 class LoginForm(forms.Form):
     username=forms.CharField(max_length=50,
                              widget=forms.TextInput(attrs={
-        'class':'w-full px-6 py-4 rounded-xl',
+        'class':'w-full  px-6 py-4 rounded-xl',
         'placeholder':'Enter your username'
 
                              }))

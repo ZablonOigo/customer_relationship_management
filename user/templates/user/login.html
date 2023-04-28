@@ -1,10 +1,20 @@
 {% extends 'web/base.html' %}
 
 {% block content %}
-<form action="" method="post">
-    {% csrf_token %}
-    <h2 class="text-2xl font-bold text-dark-600"></h2>
-    {{form.as_p}}
-    <input type="submit" value="Login" class="mt-5 px-4 py-2 bg-teal-500 text-lg font-semibold text-white rounded-xl hover:bg-teal-800">
-</form>
+<div class="m-20 mx-auto px-6 py-12 bg-gray-100 rounded-xl w-1/2">
+    <h2 class="mb-3 text-3xl font-bold text-dark-600">Login</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="" class="inline-block">Username</label>
+            {{form.username}}
+        </div>
+        <div class="mb-3">
+            <label for="" class="inline-block">Password</label>
+            {{form.password}}
+        </div>
+        <input type="submit" value="Login" class="w-full mt-5 px-4 py-2 bg-teal-500 text-lg font-semibold text-white rounded-xl hover:bg-teal-800">
+    </form>
+</div>
+
 {% endblock %}
