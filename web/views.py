@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.db.models import Q
+from .forms import *
 def index(request):
     records=Record.objects.all()
     departments=Department.objects.all()
@@ -25,3 +26,11 @@ def search_field(request):
         'departments':departments,
         ' records': records,
     })
+
+
+
+
+def create(request):
+    if request.method =="GET":
+        form=RecordForm()
+        return render(request, 'web/create.html',{'form':form} )
