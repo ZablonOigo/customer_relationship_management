@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .models import *
 from django.db.models import Q
 from .forms import *
@@ -43,3 +43,36 @@ def create(request):
             return redirect('web:index')
         else:
             return render(request, 'web/create.html', {'form':form})
+        
+
+def edit(request,id):
+    record=get_object_or_404(Record, id=id)
+
+    if request.method == 'GET':
+        form=RecordForm(instance=record)
+        context={'form':form,
+                 'id':id}
+        return render(request, 'web/create.html', context)
+    elif request.method =="POST":
+        form=RecordForm(request.POST, instance=record)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "the record has been edited successfully")
+            return redirect('web:index')
+        else:
+            return render(request,'web/create.html',{'form:form'})
+        
+
+
+
+def delete_record(request, id):
+    record=get_object_or_404(Record, id=id)
+    context={'record':record}
+    if request.method == "GET":
+        return render(request,'web/delete.html', context)
+   
+    elif request.method == "POST":
+        record.delete()
+        messages.success(request, 'The record has been deleted successfully')
+        return redirect('web:index')
+
