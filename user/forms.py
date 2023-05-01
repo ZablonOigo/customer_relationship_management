@@ -22,22 +22,21 @@ class LoginForm(forms.Form):
 class RegisterForm(UserCreationForm):
     class Meta:
         model=User
-        field=['username','email','password1','password2']
-        exclude = ("first_name", "last_name")
-    username=forms.CharField(widget=forms.TextInput(attrs={
-            'placeholder':'Enter Username',
-            'class':'w-full px-6 py-4 rounded-xl',
+        fields=('username','email','password1','password2')
 
-        }))
-    email=forms.EmailField(widget=forms.EmailInput(attrs={
-            'placeholder':'Enter email address',
-            'class':'w-full px-6 py-4 rounded-xl',
-        }))
+    username=forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder':'Your username',
+        'class':'w-full py-4 px-6 rounded-xl'
+    }))   
+    email=forms.CharField(widget=forms.EmailInput(attrs={
+        'placeholder':'Your email address',
+        'class':'w-full py-4 px-6 rounded-xl'
+    })) 
     password1=forms.CharField(widget=forms.PasswordInput(attrs={
-            'placeholder':'Enter Password',
-            'class':'w-full px-6 py-4 rounded-xl',
-        }))
+        'placeholder':'Your password',
+        'class':'w-full py-4 px-6 rounded-xl'
+    })) 
     password2=forms.CharField(widget=forms.PasswordInput(attrs={
-            'placeholder':'Repeat Password',
-            'class':'w-full px-6 py-4 rounded-xl'
-        }))
+        'placeholder':'Repeat your password',
+        'class':'w-full py-4 px-6 rounded-xl'
+    }))
