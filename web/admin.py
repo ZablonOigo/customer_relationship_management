@@ -3,3 +3,5 @@ from .models import *
 
 
 admin.site.register(Record)
+admin.site.register(Department)
+

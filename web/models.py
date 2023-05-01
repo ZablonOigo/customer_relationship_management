@@ -9,7 +9,7 @@ class Department(models.Model):
 class Record(models.Model):
     first_name=models.CharField(max_length=50, null=True, blank=True)
     last_name=models.CharField(max_length=50, null=True, blank=True)
-    departments=models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
+    departments=models.ForeignKey(Department,related_name="staff", on_delete=models.SET_NULL, null=True)
     address=models.CharField(max_length=50)
     email=models.CharField(max_length=50, null=True, blank=True)
     phone=models.CharField(max_length=50, null=True, blank=True)
